@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8"/>
+  <title>🎁 كودك الخاص</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <style>
+    body {
+      font-family: "Tajawal", Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: radial-gradient(circle at center, #1e1e2f, #0a0a12);
+      color: #fff;
+    }
+    .box {
+      background: rgba(0,0,0,0.6);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    h2 {
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+    .code {
+      font-size: 22px;
+      padding: 12px;
+      background: #111827;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: inline-block;
+      color: #0ff;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1e40af;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>✅ هذا هو كودك:</h2>
+    <div id="code" class="code">جارٍ التحميل...</div><br>
+    <button onclick="copyCode()">📋 نسخ الكود</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code') || 'King_Cheats_F53T7F2XI';
+    const codeDiv = document.getElementById('code');
+    codeDiv.textContent = code;
+
+    function copyCode() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(() => {
+          alert('✅ تم نسخ الكود بنجاح');
+        }).catch(() => {
+          manualCopy();
+        });
+      } else {
+        manualCopy();
+      }
+    }
+
+    function manualCopy() {
+      const temp = document.createElement('textarea');
+      temp.value = code;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      alert('✅ تم نسخ الكود يدويًا');
+    }
+  </script>
+</body>
+</html>
